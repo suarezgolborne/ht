@@ -2,27 +2,29 @@
  * HomePage
  * This is the first thing users see of our App
  */
+//
+//  Högalidskyrkan
+// api.sl.se/api2/realtimedepartures.json?key=79666cae66db4bd6a8b25a91f796fd72&siteid=1376&timewindow=60
+//
+// Högalidsgatan
+// api.sl.se/api2/realtimedepartures.json?key=79666cae66db4bd6a8b25a91f796fd72&siteid=1381&timewindow=60
+//
+// Hornsgatan
+// api.sl.se/api2/realtimedepartures.json?key=79666cae66db4bd6a8b25a91f796fd72&siteid=1373&timewindow=60
 
-import { asyncChangeProjectName, asyncChangeOwnerName } from '../../actions/AppActions';
+// import { asyncChangeHeaderName, asyncChangeProjectName, asyncChangeOwnerName } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import Stations from './Stations';
 
 class HomePage extends Component {
   render() {
-    const dispatch = this.props.dispatch;
-    const { projectName, ownerName } = this.props.data;
+    // const dispatch = this.props.dispatch;
+    // const { projectName, ownerName, headerName } = this.props.data;
     return (
       <div>
-        <h1>Hello World!</h1>
-        <h2>This is the demo for the <span className="home__text--red">{ projectName }</span> by <a href={'https://twitter.com/' + ownerName} >@{ ownerName }</a></h2>
-        <label className="home__label">Change to your project name:
-          <input className="home__input" type="text" onChange={(evt) => { dispatch(asyncChangeProjectName(evt.target.value)); }} defaultValue="React.js Boilerplate" value={projectName} />
-        </label>
-        <label className="home__label">Change to your name:
-          <input className="home__input" type="text" onChange={(evt) => { dispatch(asyncChangeOwnerName(evt.target.value)); }} defaultValue="mxstbr" value={ownerName} />
-        </label>
-        <Link className="btn" to="/readme">Setup</Link>
+        <Stations />
       </div>
     );
   }

@@ -27,7 +27,25 @@
 // It makes more sense to have the asnyc actions before the non-async ones
 /* eslint-disable no-use-before-define */
 
-import { CHANGE_OWNER_NAME, CHANGE_PROJECT_NAME } from '../constants/AppConstants';
+import { BUTTON_CLICK, CHANGE_HEADER, CHANGE_OWNER_NAME, CHANGE_PROJECT_NAME } from '../constants/AppConstants';
+
+export function asyncButton(name) {
+	return (dispatch) => {
+				name = name + 1;
+				return dispatch(asyncButton(name));
+	};
+
+}
+
+
+
+
+export function asyncChangeHeaderName(name) {
+	return (dispatch) => {
+		return dispatch(changeHeaderName(name));
+	};
+
+}
 
 export function asyncChangeProjectName(name) {
   return (dispatch) => {
@@ -53,4 +71,15 @@ export function changeProjectName(name) {
 
 export function changeOwnerName(name) {
   return { type: CHANGE_OWNER_NAME, name };
+}
+
+export function changeHeaderName(name) {
+	return {type:CHANGE_HEADER, name};
+
+
+}
+
+
+export function changeButton(name) {
+	return {type:BUTTON_CLICK, name};
 }

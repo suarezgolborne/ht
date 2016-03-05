@@ -13,12 +13,14 @@
  * add it in the rootReducer.js.
  */
 
-import { CHANGE_OWNER_NAME, CHANGE_PROJECT_NAME } from '../constants/AppConstants';
+import { BUTTON_CLICK, CHANGE_HEADER, CHANGE_OWNER_NAME, CHANGE_PROJECT_NAME } from '../constants/AppConstants';
 import assignToEmpty from '../utils/assign';
 
 const initialState = {
-  projectName: 'React.js Boilerplate',
-  ownerName: 'mxstbr'
+  projectName: 'SSG projectName',
+  ownerName: 'SSG ownerName',
+  headerName: 'Hej värld headerName',
+  buttonName: 1
 };
 
 function homeReducer(state = initialState, action) {
@@ -32,9 +34,23 @@ function homeReducer(state = initialState, action) {
       return assignToEmpty(state, {
         projectName: action.name
       });
-    default:
-      return state;
+    case CHANGE_HEADER:
+      return assignToEmpty(state, {
+       headerName:action.name
+     });
   }
 }
 
+function counter(state = initialState, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1
+    case 'DECREMENT':
+      return state - 1
+    default:
+      return state
+  }
+}
+
+export default counter;
 export default homeReducer;
